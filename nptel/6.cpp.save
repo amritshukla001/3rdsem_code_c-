@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+class Test {
+
+	//code 
+}
+
+int main() {
+
+	const Test t;
+	return 0;
+}	

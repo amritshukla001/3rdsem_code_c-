@@ -1,0 +1,30 @@
+----Undersatand Static and Dynamic Binding----
+----Understand Polymoorphic type----
+
+Static and Dynamic Object:
+
+class A{ };
+class A:public B{ };
+
+A *p;//pointer of A type object
+p=new A;//instance of A is created and p points to it
+p=new B;//scenario of UPCAST //actual object instance created is of type B and A *p points to A sub of B
+
+//Static type of p: A(known to the compiler)
+//Dynamic type of p: B (not known to the compiler,will incur during run-time)
+
+Static Binding:(early binding):(compiler knows pre-hand):
+when function invocation binds it to function definition based on the static type of object
+
+Dynamic Binding:(late binding):->when function invocation binds it to function definition based on the dynamic type of the object.
+->This is done at run time.
+
+B:f()->A::f();[B inherits from A]
+A *p;
+B b;
+p=&b;
+p->f() [will call f() function of B type object,i.e based on the dynamic type of object,at compilation time it is not known,at run time it is executed]
+
+(Function pointer and virtual function-> dynamic binding)
+
+

@@ -1,0 +1,32 @@
+ob1-->object of a class (a and b memeber var.)
+ob2-->another object of a class(a and b member var.)
+
+but if a is static then only one space is reserved for a(i. will have only one copy and only one memory will be shared)
+
+class Demo {
+
+	static int a=6;
+	//int b=10;
+
+	public:
+	static void init();
+	//void insert();
+}
+
+Static member function can access only the static memebers of a class
+
+Demo :: init() {
+
+	cout << "\nValue : \n" << a;
+
+	//cout << "\nValue : \n" << b;(error as it is accessing non-static data member)
+}
+
+ex.
+
+void main() {
+
+	Demo ob[5];
+}
+
+

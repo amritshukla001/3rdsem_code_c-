@@ -1,0 +1,66 @@
+#include <iostream>
+
+using namespace std;
+
+class node {
+public:
+	int data;
+	node *next;
+};
+
+typedef node *node;
+
+class list {
+
+	node *head;
+
+public:
+	list() {
+		head=NULL;
+	}
+
+	~list() {}
+	
+	node create_node();
+	void insert_pos();
+	void display();
+};
+
+void list::insert_pos() {
+	
+	int pos,val;
+	
+	cout << "\nEnter position to insert the element: ";
+	cin >> pos;
+
+	cout << "\nEnter data value: ";
+	cin >> val;
+
+	int i,pos;
+                                                                                                                                                                                                                           node temp,p;                                                                                                                                                                                                       temp=create_node();                                                                                                                                                                                                                                                                                                                                                                                                                   printf("\nEnter the position where the new node to be inserted(>=1): ");                                                                                                                                           scanf("%d",&pos);                                                                                                                                                                                                                                                                                                                                                                                                                     printf("\nEnter the data value of the node: ");                                                                                                                                                                    scanf("%d",&temp->data);                                                                                                                                                                                   
+        if(pos==1) {                                                                                                                                                                                                               temp->next=head;
+                head=temp;
+        }
+                                                                                                                                                                                                                           if(pos>1) {                                                                                                                                                                                                
+        for(i=1,p=head;i<pos-1;i++) {                                                                                                                                                                      	
+		p=p->next;
+               	if(p==NULL) {                                                                                                                                                                                                               printf("\nNo such position possible\n");                                                                                                                                                                           return;
+                        }                                                                                                                                                                                          
+                }
+
+                temp->next=p->next;
+                p->next=temp;
+        }
+
+	
+} 
+
+node list::create_node() {
+	
+	node temp;
+	temp = new node;
+	temp->link=NULL;
+	retrun temp;
+}
+	
+

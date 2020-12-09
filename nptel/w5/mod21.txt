@@ -1,0 +1,162 @@
+ISA relationship.
+
+Flower is generalization and rose is specialization.
+
+Single Inheritance:
+
+Manager ISA Employee
+Manager->Employee
+class Employee;
+class Manager : public Employee ->Manager=Derived Class Employee=Base Class
+
+
+Hybrid Inheritance:
+TwoWheeler ISA Vehicle : Three Wheeler ISA Vehicle
+More than one derived class from one base class
+
+Multi-Level Inheritance:
+Class Flower; //Base Class=Flower
+Class Rose: public Flower //Derived Class=Rose
+Class Red_Rose: public Rose //Derived Class=Red_Rose
+
+Inheritance in C++: Phones
+
+Ex.
+Landline Phones->Mobile Phones->Smart Phones
+(There is some commanality between all the three/but there are greater features as we go forward)
+
+-------------------------------------------------------------------------------------------------
+
+Derived ISA Base
+class Base;
+class Derive: public Base;
+
+Semantics:
+
+Data Members:
+Derive class inherits all data members of base class
+Derive class may add its own data members
+
+Member function:
+Derive class inherits all the member function
+Derive Class may override a member function of Base Class by redefing it with the same signature
+Derive Class may overload a member function of base class by redefining it with the same name but different signature
+
+Access Specification:
+Derive Class cannot access private members of that base class
+Derive class can access protected members of Base Class
+
+Construction-Destruction:
+A constructor of the derived class must first call the constructor of the base class to construct the base class instance of the derive class
+A destructor must first call the destructor of the base class to destruct the base class instance of the derived class
+
+How inheritance impact data member and member function??
+What is overriding and its interaction with overloading??
+
+
+Derived ISA Base:
+
+Data Members:
+Derived class inherits all data members of the base class
+Derived class may add data members of its own
+
+Object Layout:
+Layout of the derived class will contain an instance of the base class
+Furthermore,derive class layout will contain data members of its own
+C++ does not guarantee the relative position of the base class instance and Derived Class members
+
+ex.
+class B {
+	int data1B_;
+public:
+	int data2B_;
+}
+
+class D: public D {
+	//Inherits B::data1B_
+	//Inherits B::data2B_
+	int infoD_; //add D::infoD_
+public:
+	//
+}
+B b;
+D d;
+
+Object b: data1B_
+	  data2B_
+Object d: data1B_
+	  data2B_
+	-----------
+	  infoD_
+
+--->Even though D cannot access data1B_,it is a part of it
+
+---> D can access data2B_
+
+Member Function:
+Inherits all
+Can Override or Overwrite
+Can Overload
+
+->Static and Friend member function is not inherited.
+	
+class B {
+	void f(int i);
+	void g(int j);
+};
+
+class D {
+//Inherited B::f(i) and B::f(j)
+};
+
+D d;
+d.f(i);//note
+
+Overriding and Overloading:
+class B{
+public:
+	void f(int i);
+	void g(int j);
+};
+class D: public B {
+
+public:
+	//Inherits B::f(int)
+	void f(int i); //overrides B::f(int) d.f(int); will call this over-rides function
+	void f(char*); //overloads B::f(int)
+	//Inherits B::g(int)
+};
+
+Note:
+D::f(int) overrides B::f(int)
+D::f(int) overloads B::f(int)
+
+Access Specification:-
+Two class of Access-Specifiers:
+Private and Public
+
+If derives class cannot access any members that the class protects from outside world, need of new access specifier:protected so the derived class can access it
+
+Derive Class can access protected data members and member function but it will remain accessible to the other outside world.
+
+class B {
+protected: 
+	int dataB_;
+public:
+	void print() {
+	cout << dataB_ << endl;
+	}
+}
+
+class D: public B {
+public: 
+	void print() {
+		cout << dataB_ << endl;
+	}
+}
+
+D d;
+b.dataB_=5;//wrong
+d.print();
+
+

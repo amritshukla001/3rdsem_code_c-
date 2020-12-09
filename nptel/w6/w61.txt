@@ -1,0 +1,150 @@
+Seen Inheritance in previous lectures.
+
+Polymorphism in C++:
+
+---> Casting in class hierarchy
+--->
+
+----Casting in class hierarchy------
+
+Casting is performed when a value or var. of one type is used in place of other.
+
+int i=3;
+double d=2.6;
+
+double result=i/d;
+
+Example:
+
+int i=3;
+double d=2.6;
+double *p=&d;
+
+d=i;  //implicit casting 
+i=d; //implicit casting with a warning as double being much greate than int also some data may be lost
+i=(int)d
+
+i=p; //error: cannot covert a doble pointer to int
+i=(int)p //explicit
+
+Implicit casting is not possible between unrelated classes:
+
+class A { int i;}
+class B { double d; }
+
+A a;
+B b;
+
+A *p=&a;
+B *q=&b;
+
+a=b //error : no operator found which take a right-hand operand of main::B
+a=(A)b // error
+b=a; //error
+b=(B)a //error
+p=q //error: cannot convert main*A to main*B 
+p=(A*)&b; //force::okay
+q=(B*)&a; //force::okay
+
+
+Forced casting between unrelated class is dangerous:
+
+--> same code like above
+
+a.i=5;
+b.d=7.2;
+
+cout << p->i << endl;
+cout << q->d << endl;
+---All good----
+now cast:
+
+p=(A*)&b;
+q=(B*)&a;
+
+cout << p->i << endl;//will print a garbage int value
+cout << q->d << endl;//will print a garbage floating point value
+--Garbage value-----
+
+Casting on hierarchy is possible in liited sense:
+
+class A { };
+class B: pyublic A { };
+
+A *pa=0;
+B *pb=0;
+void *pv=0;
+
+pa=pb; //allowed //UPCAST possible
+pb=pa; //error //DOWNCAST not-possible
+
+pv=pa; //okay
+pv=pb;	//okay
+
+pa=pv; //error
+pb=pv; //error
+
+Some code to understand:
+
+class A { public : int a_; };
+class B : public A { public: int b_; };
+
+A a;
+B b;
+
+A *pa=&a;
+A *pb=&b;
+
+cout << pa->a_; prints a_
+cout << pb->a_ << pb->b_; prints a_ and b_ both
+
+pa=&b; //will only point to A part of B,as pa is a pointer of A type
+
+cout << pa->a_;//all good
+cout << pa->b_;//error: as compiler knows that pa is a pointer of A type ,hence cannot access other var.
+
+Static and Dynamic Binding:
+
+class A {
+
+void f() { cout << "A:: f()" << endl; }
+virtual void g() { cout << "A::g()" << endl; }
+} 
+
+class B:public A {
+
+void f() { cout << "B:: f()" << endl; }
+virtual void g() { cout << "B::g()" << endl; }
+} 
+
+
+int main() {
+
+A a;
+B b;
+
+A *pa=&a;
+A *pb=&b; //upcast
+
+Now: pa->f() : A::f();//static binding
+     pa->g() : A::g();//dynamic binding
+
+     pb->f() : A::f();//static binding
+     pb->g() : B::g();//dynamic binding
+
+    In case of f(), binding is static,i.e which function will be called will be known at the compile time
+    In case of g(), binding is dynamic,i.e which function will be called will be decded at the run time.The type of pointer does not decide but the type of object decides which funtion will be called.
+
+If,there is virtual function then it is dynamic binding, the pointer type does not decide but type of object decides
+
+	A &ra=a;
+	A &rb=b;
+
+	ra.f(): A::f()
+	ra.g(): A::g()//dynamic binding
+	rb.f(): A::f()
+	rb.g(): B::g()//dynamic binding
+
+
+UPCAST: if we cast from a specialised class to a generalised class then the expression is valid but not vica-versa.
+

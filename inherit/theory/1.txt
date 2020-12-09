@@ -1,0 +1,38 @@
+Inheritance:
+
+Consider a class A(data members-x and y) and member function:disp()
+
+B(z and p())
+B ob
+ob.disp()
+
+If B derives A,all the members of A are inherited in B
+
+Here A is the base class(parent) and B is the derived class(child)
+
+Properties:
+--->enhances code reusability
+
+while invoking disp() function of class A from class B:
+we an override methods or else we can use the same code
+
+
+--->method overriding:if we want to modift the function
+
+The class which derives is child class
+and the class from which it derives is parent class
+
+Types Of Inheritance: single,multiple,hybrid,multilevel,hierarchial
+
+Single Inheritance:
+
+A->B
+
+Syntax of Base Class:  class base_class {
+				//body of the base_class
+			}
+			class derived_class :: visibility_mode base_class {
+				//body of the derived class
+			}
+
+

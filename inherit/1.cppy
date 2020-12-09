@@ -1,0 +1,82 @@
+//programme takes compile time input
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+class student {
+
+protected:
+		string usn_;
+		string name_;
+		int age_;
+public:
+	student(string usn,string name,int age) {
+ 		usn_=usn;
+		name_=name;
+		age_=age;
+	}
+	
+	void print() {
+		cout << usn_ << "\t" << name_ << "\t" << age_ << endl;
+	}
+
+	~student() {
+		cout << "object destruted" << endl;
+	}
+	
+};
+
+class ugstudent: public student {
+
+protected:
+		int sem_;
+		int fees_;
+		int stp_;
+public:
+		ugstudent(string usn,string name,int age,int sem,int fees,int stp): student(usn,name,age) {
+			sem_=sem;
+			fees_=fees;
+			stp_=stp;
+		}
+
+		void print() {
+			cout << usn_ << "\t" << name_ << "\t" << age_ << "\t" << sem_ << "\t" << fees_ << "\t" << stp_ << endl;
+		}
+		
+		~ugstudent() {
+			cout << "object destructed1" << endl;
+		} 
+};
+
+class pgstudent: public ugstudent {
+
+//protected:
+		//int sem_;
+		//int fees_;
+		//int stp_;
+public:
+		pgstudent(string usn,string name,int age,int sem,int fees,int stp): ugstudent(usn,name,age,sem,fees,stp) {
+		
+		}
+
+		void print() {
+			cout << usn_ << "\t" << name_ << "\t" << age_ << "\t" << sem_ << "\t" << fees_ << "\t" << stp_ << endl;
+		}
+		
+		~pgstudent() {
+			cout << "object destructed2" << endl;
+		} 
+};
+
+main() {
+
+	student s= new student("amrit shukla","shukla amrit",28);
+	s.print();
+	ugstudent ug("amrit shukl","shukla amrit",90,80,90,80);
+	ug.print();
+	pgstudent pg("amrit shukla","shukla amrit",90,80,90,80);
+	pg.print();
+	//cout << "1" << endl;
+	//return 0;
+}

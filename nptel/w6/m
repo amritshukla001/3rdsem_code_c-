@@ -1,0 +1,75 @@
+#include <iostream>
+
+using namespace std;
+
+class A {
+
+public:
+
+AO { cout <« "A "; }
+
+FAC { cout <« **A "; }
+
+class B public A C
+
+public:
+
+BO { cout << " :)
+
+virtual "B() { cout << "B "; }
+
+class C: public B (
+
+public:
+
+CO { cout <« "C : }
+
+*CO { cout << RC
+
+};
+
+int main() {
+
+A ti = new :
+
+delete ti;
+
+return 0;
+include <iostream>
+
+using namespace std;
+
+class A {
+
+public:
+
+AO { cout <« "A "; }
+
+FAC { cout <« **A "; }
+
+class B public A C
+
+public:
+
+BO { cout << " :)
+
+virtual "B() { cout << "B "; }
+
+class C: public B (
+
+public:
+
+CO { cout <« "C : }
+
+*CO { cout << RC
+
+};
+
+int main() {
+
+A ti = new :
+
+delete ti;
+
+return 0;
+

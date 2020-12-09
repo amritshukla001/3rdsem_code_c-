@@ -1,0 +1,89 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+double m;
+int n;
+
+class C_Power
+{
+public:
+    double pow (double m , int n=2)
+    {
+        return (pow(m,n));
+    }
+    
+    int pow (int m, int n)
+    {
+        return (pow(m,n));
+    }
+    
+    void get()
+    {
+        cout << "\nEnter m: ";
+        cin >> m;
+        cout << "Enter n: ";
+        cin >> n;
+    }
+
+   
+};
+
+int main()
+{   
+    C_Power c;
+    int choice;
+    //Read m and n
+    c.get();
+    
+    double result;
+    do
+    {
+        cout<<"\nCHOICES\n";
+        
+        cout<<"1.Only Value of M\n";
+        
+        cout<<"2.Value for both M and N\n";
+        
+        cout<<"3.QUIT\n";
+        
+        cout<<"ENTER YOUR CHOICE : ";
+        
+        cin>>choice;
+        
+        cout<<endl;
+    
+    switch(choice)
+    {
+    case 1 : cout<<"Enter Value for M :\n";
+             
+             cin>>m;
+             
+             result=c.pow(m);
+             
+             cout<<"Power function when default argument is used : "<<result;
+             
+             break;
+    
+    case 2 : cout<<"Enter Value for M and N :\n";
+             
+             cin>>m>>n;
+             
+             result=c.pow(m,n);
+             
+             cout<<"Power function when actual argument is use : "<<result;
+             
+             break;
+    
+    case 3 : cout<<"You have quitted\n";
+             
+             break;         
+    
+    default: cout<<"Entered Value is Invalid, Try again";
+    }
+
+        
+    }while(choice!=3);
+
+    cout << "The result is: " << result << endl;
+}

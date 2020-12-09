@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+class Bank {
+
+	char name_[30];
+	int acno_;
+	float bal_;
+	static int trans_;
+
+public: 
+	void read();
+	void depo();
+	void with();
+	static void trans();
+}
+
+void Bank :: read() {
+
+	in 

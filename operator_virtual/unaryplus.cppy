@@ -1,0 +1,85 @@
+/*Write a C++ program to create a class called COMPLEX and implement the following by overloading + operator:-
+
+i. a+ s2; where a is an integer (real part) and s2 is a complex number.
+
+ii. s1+ s2 ; where s1 and s2 are complex numbers. 
+
+iii. Return object and display the result.
+*/
+
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+
+class COMPLEX {
+
+	int real;
+	int img;
+
+public:
+	void read() {
+	
+		cout << "\nReal part: ";
+		cin >> real;
+		cout << "\nImg part: ";
+		cin >> img;
+	}
+
+	COMPLEX operator +(COMPLEX s1) {
+
+		COMPLEX s;
+		s.real=s1.real+s2.real;
+		s.img=s1.img+s2.img;
+		retrun s;
+	}
+
+	 COMPLEX operator +(int a) {
+
+		COMPLEX s;
+		s.real=a+s2.real;
+		s.img=s2.img;
+		retrun s;
+	}
+
+	void disp() {
+
+		cout << "\n" << real << " + " << img << "i\n";
+	}
+};
+
+int main() {
+
+	COMPLEX s1,s2,res;
+	int a,choice;
+
+	while(1) {
+		
+		cout << "\n*****\n" << "\n1.Add two complex number" << "\n2.Add integer and complex number" << "\n3.Quit" << "\n*****\n";
+
+		cout << "\nEnter your choice: " ;
+		scanf("%d",&choice);
+
+		switch(choice) {
+
+			case 1:	cout << "\nEnter s1: \n";
+				s1.read();
+
+				cout << "\nEnter s2: \n";
+				s2.read();
+
+				res=s1+s2;
+				
+				cout << "\nSum of the two given complex number: ";
+				res.disp();
+
+				break;
+
+			case 3: exit(0);
+		}
+	}
+}
+
+				 
+

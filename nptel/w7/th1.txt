@@ -1,0 +1,10 @@
+Polymorphic dispatch:
+
+When we call a member function of a class part of a polymorphic hierarchy via a base class pointer,the function is called in run-time.
+The called function does not depend upon the pointer but the object the pointer points to.
+
+Compiler works at static time.
+At run time the object it actually points to,it generates a code for dynamic-binding.
+
+
+Virtual function table for polymorphic dispatch

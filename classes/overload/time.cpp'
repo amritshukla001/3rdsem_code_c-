@@ -1,0 +1,89 @@
+/*
+Name - Amrit Shukla
+Reg no.- 201900041
+Description:
+Write a program in C++ to create a class named TIME that stores two time values in hours (float) and minutes (integer). Perform the following operations by using a function add():- 
+
+Add T1+T2 where , T1 and T2 are time objects.
+
+ Add T1+x where T1 is a TIME object and x is any integer. 
+
+Return time objects from the member function to main() and display
+Algorithm:
+STEP 0:  Start
+STEP 2:  Declare the class name as Time with data members and member functions.
+STEP 3:  Read the choice x,hours minutes from the user.
+STEP 4:  The function add() to find the addition of t1 + t2 with minute as integer and hours as float argument.
+STEP 5:  The function add() to find the addition of t1+x with minute and x as two integer argument and hour as float.
+STEP 6:  Display the user input values also in the output 
+STEP 7:  Add the two time functions t1 and t2 to keep it in hours:minutes format
+SYEP 8:  Add the two time functions t1 and x to keep it in hours:minutes format
+STEP 9:  Stop
+*/
+
+#include <iostream>
+using namespace std;
+
+class Time {
+
+    float hours;
+    int minutes;
+    int x;
+
+public:
+    
+    void getTime(void);
+    void putTime(void);
+    void addTime(Time T1,Time T2);
+    void addTime(Time T1,int x);
+    void showTime(void);
+};
+
+void Time::getTime(void) {
+    
+    cout << "Enter time:" << endl;
+    cout << "Hours: ";    cin>>hours;
+    cout << "Minutes: ";  cin>>minutes;
+    cout << "x? ";  cin>>x;
+}
+
+void Time::putTime(void) {
+    
+    cout << endl;
+    cout << "Time after add(T1+T2): ";
+    cout << hours << ":" << minutes << endl;
+}
+
+void Time::showTime(void) {
+        
+    cout<<endl;
+    cout<<"\nTime after add (T1+x):";
+    cout<<hours<<":"<<minutes<<endl;
+}
+void Time::addTime(Time T1,Time T2) {
+
+    this->minutes=T1.minutes+T2.minutes;
+    this->hours= T1.hours+T2.hours + (this->minutes/60);
+    this->minutes %=60;
+}
+
+void Time::addTime(Time T1,int x) {
+    
+    this->minutes=T1.minutes+ x;
+    this->hours=T1.hours+x+(this->minutes/60);
+    this->minutes %=60;
+}
+
+int main() {
+    
+    int x;
+    Time T1,T2,T3,T4;
+    T1.getTime();
+    T2.getTime();
+    T3.addTime(T1,T2);
+    T4.addTime(T1,x);
+    T3.putTime();
+    T4.showTime();
+
+    return 0;
+}

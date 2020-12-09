@@ -1,0 +1,10 @@
+->Virtual Destructor
+->Pure Virtual Function
+->Abstract Base Class
+
+
+->An Abstract Base class has at least one virtual function.
+->Pure virtual function: void fun()=0
+	->It may or may not have a body
+->We cannot make a instance of a abstract class 
+

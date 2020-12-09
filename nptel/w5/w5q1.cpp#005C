@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+class A {
+	static int x;
+	int x1=5;
+public:
+	void f1() {
+		cout << "f1" << endl;
+	}
+};
+
+class B: public A {
+	int d1=10;
+};
+int A::x=10;
+
+int main() {
+	B b;
+	cout << sizeof(b) << endl;
+	return O;
+}
